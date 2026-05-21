@@ -27,81 +27,103 @@ export default function Home() {
 
       <Navbar />
 
-      <main className="min-h-screen bg-gray-100 p-10">
+      <main className="min-h-screen bg-gray-50 px-8 py-12">
 
-        <h1 className="text-5xl font-bold text-center mb-10">
-          Punto de Venta
-        </h1>
+        <div className="max-w-7xl mx-auto">
 
-        <div className="flex justify-center gap-5 mb-10">
+          <div className="text-center mb-14">
 
-          <button
-            onClick={() =>
-              setCategory("Todos")
-            }
-            className="bg-black text-white px-5 py-2 rounded-lg"
-          >
-            Todos
-          </button>
+            <h1 className="text-6xl font-bold text-black">
+              POS Store
+            </h1>
 
-          <button
-            onClick={() =>
-              setCategory("Tecnología")
-            }
-            className="bg-white px-5 py-2 rounded-lg shadow"
-          >
-            Tecnología
-          </button>
+            <p className="text-gray-500 mt-4 text-lg">
+              Punto de venta minimalista
+            </p>
 
-          <button
-            onClick={() =>
-              setCategory("Ropa")
-            }
-            className="bg-white px-5 py-2 rounded-lg shadow"
-          >
-            Ropa
-          </button>
+          </div>
 
-        </div>
+          <div className="flex justify-center gap-4 mb-14 flex-wrap">
 
-        <div className="grid md:grid-cols-3 gap-8">
-
-          {filteredProducts.map((product) => (
-
-            <Link
-              key={product.id}
-              href={`/producto/${product.id}`}
+            <button
+              onClick={() => setCategory("Todos")}
+              className={`px-6 py-3 rounded-full transition font-medium ${
+                category === "Todos"
+                  ? "bg-black text-white"
+                  : "bg-white text-black border"
+              }`}
             >
+              Todos
+            </button>
+
+            <button
+              onClick={() => setCategory("Tecnología")}
+              className={`px-6 py-3 rounded-full transition font-medium ${
+                category === "Tecnología"
+                  ? "bg-black text-white"
+                  : "bg-white text-black border"
+              }`}
+            >
+              Tecnología
+            </button>
+
+            <button
+              onClick={() => setCategory("Ropa")}
+              className={`px-6 py-3 rounded-full transition font-medium ${
+                category === "Ropa"
+                  ? "bg-black text-white"
+                  : "bg-white text-black border"
+              }`}
+            >
+              Ropa
+            </button>
+
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            {filteredProducts.map((product) => (
 
               <div
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition cursor-pointer"
+                key={product.id}
+                className="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-2xl transition duration-300"
               >
 
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-56 object-cover"
-                />
+                <Link href={`/producto/${product.id}`}>
 
-                <div className="p-5">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-72 object-cover hover:scale-105 transition duration-300"
+                  />
 
-                  <h2 className="text-2xl font-bold">
-                    {product.name}
-                  </h2>
+                </Link>
 
-                  <p className="text-gray-500 mt-2">
-                    ${product.price}
-                  </p>
+                <div className="p-6">
+
+                  <div className="flex justify-between items-center">
+
+                    <div>
+
+                      <h2 className="text-2xl font-semibold text-black">
+                        {product.name}
+                      </h2>
+
+                      <p className="text-gray-500 mt-2">
+                        {product.category}
+                      </p>
+
+                    </div>
+
+                    <p className="text-2xl font-bold text-black">
+                      ${product.price}
+                    </p>
+
+                  </div>
 
                   <button
-                    onClick={(e) => {
-
-                      e.preventDefault();
-
-                      addToCart(product);
-
-                    }}
-                    className="bg-black text-white px-5 py-2 rounded-lg mt-5 w-full"
+                    onClick={() => addToCart(product)}
+                    className="w-full bg-black text-white py-3 rounded-2xl mt-6 hover:bg-gray-800 transition"
                   >
                     Agregar al carrito
                   </button>
@@ -110,9 +132,9 @@ export default function Home() {
 
               </div>
 
-            </Link>
+            ))}
 
-          ))}
+          </div>
 
         </div>
 

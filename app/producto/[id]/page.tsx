@@ -1,5 +1,7 @@
 import products from "@/data/products";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ProductDetail({
   params,
@@ -23,49 +25,51 @@ export default async function ProductDetail({
 
   return (
 
-    <main className="min-h-screen bg-gray-100 p-10">
+    <>
 
-      <Link
-        href="/"
-        className="bg-black text-white px-5 py-2 rounded-lg"
-      >
-        ← Regresar
-      </Link>
+      <Navbar />
 
-      <div className="bg-white rounded-2xl shadow-lg mt-10 p-10 grid md:grid-cols-2 gap-10">
+      <main className="min-h-screen bg-gray-100 p-10">
 
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-[500px] object-cover rounded-2xl"
-        />
+        <Link
+          href="/"
+          className="bg-black text-white px-5 py-2 rounded-lg"
+        >
+          ← Regresar
+        </Link>
 
-        <div className="flex flex-col justify-center">
+        <div className="bg-white rounded-2xl shadow-lg mt-10 p-10 grid md:grid-cols-2 gap-10">
 
-          <h1 className="text-5xl font-bold">
-            {product.name}
-          </h1>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-[500px] object-cover rounded-2xl"
+          />
 
-          <p className="text-3xl text-gray-600 mt-5">
-            ${product.price}
-          </p>
+          <div className="flex flex-col justify-center">
 
-          <p className="text-lg text-gray-500 mt-8">
-            Producto premium de alta calidad ideal
-            para uso diario.
-          </p>
+            <h1 className="text-5xl font-bold">
+              {product.name}
+            </h1>
 
-          <button
-            className="bg-black text-white px-6 py-3 rounded-xl mt-10 w-fit"
-          >
-            Agregar al carrito
-          </button>
+            <p className="text-3xl text-gray-600 mt-5">
+              ${product.price}
+            </p>
+
+            <p className="text-lg text-gray-500 mt-8">
+              Producto premium de alta calidad ideal
+              para uso diario.
+            </p>
+
+            <AddToCartButton product={product} />
+
+          </div>
 
         </div>
 
-      </div>
+      </main>
 
-    </main>
+    </>
 
   );
 }

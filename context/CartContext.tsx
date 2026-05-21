@@ -3,8 +3,8 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useState,
+  useEffect,
 } from "react";
 
 const CartContext = createContext<any>(null);
@@ -39,11 +39,11 @@ export function CartProvider({
 
   const addToCart = (product: any) => {
 
-    const exist = cart.find(
+    const exists = cart.find(
       (item) => item.id === product.id
     );
 
-    if (exist) {
+    if (exists) {
 
       setCart(
         cart.map((item) =>
@@ -99,6 +99,7 @@ export function CartProvider({
   );
 
   return (
+
     <CartContext.Provider
       value={{
         cart,
@@ -109,9 +110,13 @@ export function CartProvider({
         totalItems,
       }}
     >
+
       {children}
+
     </CartContext.Provider>
+
   );
+
 }
 
 export const useCart = () =>

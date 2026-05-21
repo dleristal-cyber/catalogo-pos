@@ -1,27 +1,33 @@
 "use client";
+
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+
 export default function Navbar() {
-    const { totalItems } = useCart();
+
+  const { totalItems } = useCart();
 
   return (
 
-    <nav className="bg-black text-white p-5 flex justify-between items-center shadow-lg">
+    <nav className="bg-black text-white p-5 flex justify-between items-center">
 
-      <h1 className="text-3xl font-bold">
-        POS STORE
-      </h1>
+      <Link href="/">
 
-      <div className="flex gap-5">
+        <h1 className="text-3xl font-bold cursor-pointer">
+          POS
+        </h1>
 
-        <button className="hover:text-gray-300">
-          Inicio
-        </button>
+      </Link>
 
-        <button className="hover:text-gray-300">
+      <Link href="/carrito">
+
+        <button className="hover:text-gray-300 text-xl">
+
           Carrito ({totalItems})
+
         </button>
 
-      </div>
+      </Link>
 
     </nav>
 
