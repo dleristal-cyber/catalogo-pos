@@ -27,17 +27,17 @@ export default function Home() {
 
       <Navbar />
 
-      <main className="min-h-screen bg-gray-50 px-8 py-12">
+      <main className="min-h-screen bg-[#f5f7fb] px-8 py-12">
 
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-14">
 
-            <h1 className="text-6xl font-bold text-black">
+            <h1 className="text-6xl font-extrabold text-[#111827] tracking-tight">
               POS Store
             </h1>
 
-            <p className="text-gray-500 mt-4 text-lg">
+            <p className="text-gray-500 mt-4 text-xl font-light">
               Punto de venta minimalista
             </p>
 
@@ -47,10 +47,10 @@ export default function Home() {
 
             <button
               onClick={() => setCategory("Todos")}
-              className={`px-6 py-3 rounded-full transition font-medium ${
+              className={`px-6 py-3 rounded-full transition-all duration-300 font-medium ${
                 category === "Todos"
-                  ? "bg-black text-white"
-                  : "bg-white text-black border"
+                  ? "bg-[#111827] text-white shadow-md"
+                  : "bg-white text-gray-700 border border-gray-200 hover:border-[#2563eb] hover:text-[#2563eb]"
               }`}
             >
               Todos
@@ -58,10 +58,10 @@ export default function Home() {
 
             <button
               onClick={() => setCategory("Tecnología")}
-              className={`px-6 py-3 rounded-full transition font-medium ${
+              className={`px-6 py-3 rounded-full transition-all duration-300 font-medium ${
                 category === "Tecnología"
-                  ? "bg-black text-white"
-                  : "bg-white text-black border"
+                  ? "bg-[#111827] text-white shadow-md"
+                  : "bg-white text-gray-700 border border-gray-200 hover:border-[#2563eb] hover:text-[#2563eb]"
               }`}
             >
               Tecnología
@@ -69,10 +69,10 @@ export default function Home() {
 
             <button
               onClick={() => setCategory("Ropa")}
-              className={`px-6 py-3 rounded-full transition font-medium ${
+              className={`px-6 py-3 rounded-full transition-all duration-300 font-medium ${
                 category === "Ropa"
-                  ? "bg-black text-white"
-                  : "bg-white text-black border"
+                  ? "bg-[#111827] text-white shadow-md"
+                  : "bg-white text-gray-700 border border-gray-200 hover:border-[#2563eb] hover:text-[#2563eb]"
               }`}
             >
               Ropa
@@ -86,7 +86,7 @@ export default function Home() {
 
               <div
                 key={product.id}
-                className="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-2xl transition duration-300"
+                className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               >
 
                 <Link href={`/producto/${product.id}`}>
@@ -94,7 +94,7 @@ export default function Home() {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-72 object-cover hover:scale-105 transition duration-300"
+                    className="w-full h-72 object-cover hover:scale-110 transition-all duration-500"
                   />
 
                 </Link>
@@ -105,17 +105,17 @@ export default function Home() {
 
                     <div>
 
-                      <h2 className="text-2xl font-semibold text-black">
+                      <h2 className="text-2xl font-bold text-[#111827]">
                         {product.name}
                       </h2>
 
-                      <p className="text-gray-500 mt-2">
+                      <p className="text-sm text-gray-400 mt-2 uppercase tracking-widest">
                         {product.category}
                       </p>
 
                     </div>
 
-                    <p className="text-2xl font-bold text-black">
+                    <p className="text-3xl font-extrabold text-[#2563eb]">
                       ${product.price}
                     </p>
 
@@ -123,7 +123,7 @@ export default function Home() {
 
                   <button
                     onClick={() => addToCart(product)}
-                    className="w-full bg-black text-white py-3 rounded-2xl mt-6 hover:bg-gray-800 transition"
+                    className="w-full bg-[#111827] text-white py-3 rounded-2xl mt-6 hover:bg-[#2563eb] transition-all duration-300 font-semibold shadow-lg"
                   >
                     Agregar al carrito
                   </button>
